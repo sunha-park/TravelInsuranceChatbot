@@ -1,0 +1,99 @@
+/* 전체 컨테이너 중앙 정렬 및 반응형 설정 */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+
+/* 아이콘 스타일 */
+.icon {
+    width: 80px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* 채팅 그룹 스타일 */
+.chat-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid #4A90E2;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+/* 채팅 헤더 스타일 */
+.chat-header {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 10px;
+}
+
+.chat-header h3 {
+    margin: 5px 0;
+    line-height: 1.4;
+}
+/* 버튼 그룹 스타일 */
+.chat-body {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.info-group {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.button-group {
+    display: flex; /* 버튼 그룹을 가로로 배치 */
+    justify-content: space-between; /* 버튼 사이에 간격 생성 */
+    width: 100%; /* 버튼 그룹이 부모 요소의 폭을 가득 채우도록 설정 */
+}
+.button-group button {
+    flex: 1; /* 버튼이 동일한 너비를 가질 수 있도록 설정 */
+    margin: 0 5px; /* 버튼 사이에 약간의 여백 추가 */
+    padding: 15px;
+    border: 1px solid #4A90E2;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+
+
+/* 채팅 푸터 스타일 */
+.chat-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    width: 100%;
+}
+
+/* 하단 아이콘 스타일 */
+.bottom_icon {
+    width: 40px;
+    height: auto;
+}
+
+/* 푸터 텍스트 */
+.chat-footer p {
+    font-size: calc(0.8rem + 0.2vw); /* Responsive font size */
+    margin: 0;
+    margin-right: 5px;
+}

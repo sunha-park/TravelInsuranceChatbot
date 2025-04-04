@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='sexBirthStyle.css') }}">
+    <title>Chatbot Interface</title>
+</head>
+<body>
+    <div class="container">
+        <br><br><br>
+        <div class="chat-group">
+            <div class="chat-header">
+                <br><br>
+                <img src="static/world.png" alt="world icon" class="icon">
+                <br><br>
+                <h3>가입자 정보를 입력해 주세요</h3>
+            </div>
+            
+        
+            <form action="{{ url_for('insurance') }}" method="POST">
+                <div class="chat-body">
+                    <div class="info-group">
+                        <h6>생년월일</h6>
+                        <input type="text" name="birth_date" placeholder="예:19990813" pattern="\d{8}" required>
+                        
+                        <h6>성별</h6>
+                        <div class="button-group">
+                            <button type="submit" name="gender" value="남성" class="outline {{ 'active' if session.get('gender') == '남성' else '' }}">남성</button>
+                            <button type="submit" name="gender" value="여성" class="outline {{ 'active' if session.get('gender') == '여성' else '' }}">여성</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="chat-footer">
+                <p>챗봇상담</p>
+                <a href="{{ url_for('chat') }}"><img src="static/headset-icon.png" alt="headset icon" class="bottom_icon"></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+/* 전체 컨테이너 중앙 정렬 및 반응형 설정 */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+
+/* 아이콘 스타일 */
+.icon {
+    width: 80px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* 채팅 그룹 스타일 */
+.chat-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid #4A90E2;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+/* 채팅 헤더 스타일 */
+.chat-header {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 10px;
+}
+
+.chat-header h3 {
+    margin: 5px 0;
+    line-height: 1.4;
+}
+
+
+/* 버튼 그룹 스타일 */
+.chat-body {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.date-group {
+    justify-content: center;
+    align-items: center;
+    color: black;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.date-group input[type="date"],
+.date-group{
+    align-items: center;
+    padding: 10px;
+    font-size: calc(0.9rem + 0.2vw); /* Responsive font size */
+    margin-top: 5px;
+}
+
+.outline {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #4A90E2;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.outline:hover {
+    background-color: #357ABD;
+}
+
+/* 채팅 푸터 스타일 */
+.chat-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    width: 100%;
+}
+
+/* 하단 아이콘 스타일 */
+.bottom_icon {
+    width: 40px;
+    height: auto;
+}
+
+/* 푸터 텍스트 */
+.chat-footer p {
+    font-size: calc(0.8rem + 0.2vw); /* Responsive font size */
+    margin: 0;
+    margin-right: 5px;
+}

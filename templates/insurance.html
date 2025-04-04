@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link href="https://cdn.jsdelivr.net/gh/GoogleFonts/pretendard@main/variable/pretendard-variable.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='insuranceStyle.css') }}">
+    <title>Chatbot Interface</title>
+</head>
+
+<body>
+    <main class="container">
+    <br>
+    <br>
+    <br>
+    <h3>원하시는 상품을 선택해 주세요</h3>
+    <br>
+        <table class="styled">
+            <tbody>
+                <tr>
+                    <th>가입자정보</th>
+                    <td>{{ birth_date }} {{ gender }}</td>
+                </tr>
+                <tr>
+                    <th>여행국가</th>
+                    <td>{{ travel_country }}</td>
+                </tr>
+                <tr>
+                    <th>출발일시</th>
+                    <td>{{ departure_date }}</td>
+                </tr>
+                <tr>
+                    <th>도착일시</th>
+                    <td>{{ arrival_date }}</td>
+                </tr>
+                <tr>
+                    <th>여행기간</th>
+                    <td>총 {{ travel_duration }}일</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <div class="tab-menu">
+        <button class="tab-link active" onclick="openTab(event, 'insurance')">보험료 비교</button>
+        <button class="tab-link" onclick="openTab(event, 'coverage')">보장별 비교</button>
+    </div>
+
+    <!-- 보험료 비교 -->
+    <div id="insurance" class="tab-content active">
+        <form action="{{ url_for('choose') }}" method="POST">
+            <div class="selection">
+                <label>
+                    <input type="radio" name="product" value="든든" checked>
+                    <div class="product-details">
+                        <h6>든든</h6>
+                        <span class="classification">보장 든든하게</span>
+                        <span class="price">{{doon}}원</span>
+                    </div>
+                </label>
+                <label>
+                    <input type="radio" name="product" value="안심">
+                    <div class="product-details">
+                        <h6>안심</h6>
+                        <span class="classification">여행자 추천</span>
+                        <span class="price">{{ansim}}원</span>
+                    </div>
+                </label>
+                <label>
+                    <input type="radio" name="product" value="실속">
+                    <div class="product-details">
+                        <h6>실속</h6>
+                        <span class="classification">착한 가격</span>
+                        <span class="price">{{silsok}}원</span>
+                    </div>
+                </label>
+            </div>
+            <br>
+            <div class="form-footer">
+                <button type="button" class="prev-btn" onclick="location.href='/'">&lt; 이전</button>
+                <button type="submit" class="next-btn" onclick="location.href='/paying'">다음 &gt; </button>
+            </div>
+        </form>
+    </div>
+
+    <div id="coverage" class="tab-content">
+        <table class="comparison-table">
+        <thead>
+            <tr>
+                <th>담보명</th>
+                <th>든든</th>
+                <th>안심</th>
+                <th>실속</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>상해</td>
+                <td>1억원</td>
+                <td>5,000만원</td>
+                <td>3,000만원</td>
+            </tr>
+            <tr>
+                <td>질병</td>
+                <td>1억원</td>
+                <td>5,000만원</td>
+                <td>3,000만원</td>
+            </tr>
+            <tr>
+                <td>특정전염병</td>
+                <td>20만원</td>
+                <td>20만원</td>
+                <td>20만원</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <script>
+        function openTab(event, tabName) {
+            // 모든 탭 콘텐츠 숨기기
+            var tabContent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+                tabContent[i].classList.remove("active");
+            }
+
+            // 모든 탭 링크에서 active 클래스 제거
+            var tabLinks = document.getElementsByClassName("tab-link");
+            for (var i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].classList.remove("active");
+            }
+
+            // 클릭된 탭을 활성화
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+
+        // 페이지가 로드되면 기본으로 첫 번째 탭을 표시
+        document.getElementById("insurance").style.display = "block";
+    </script>
+
+
+</body>
+</html>

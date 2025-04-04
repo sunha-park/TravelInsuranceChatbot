@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='payStyle.css') }}">
+    <title>결제창</title>
+    <style>
+        /* 로딩 창 스타일 */
+        .loading-overlay {
+            display: none; /* 기본 상태는 숨김 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* 로딩 스피너 애니메이션 */
+        .spinner {
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <!-- 로딩 오버레이 -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="spinner"></div>
+        </div>
+        
+        <h3><span style="color: blue;">{{ user[0] }}</span> 여행</h3>
+        <h4>총 <span style="color: blue;">{{ cost }}</span> 원 결제 진행</h4>
+        <br>
+        <table class="styled">
+            <tbody>
+                <tr>
+                    <th>이름</th>
+                    <td>{{ user[2] }}</td>
+                </tr>
+                <tr>
+                    <th>생년월일</th>
+                    <td>{{ user[3] }} {{ user[4] }}</td>
+                </tr>
+                <tr>
+                    <th>여행국가</th>
+                    <td>{{ user[5] }}</td>
+                </tr>
+                <tr>
+                    <th>출발일시</th>
+                    <td>{{ user[6] }}</td>
+                </tr>
+                <tr>
+                    <th>도착일시</th>
+                    <td>{{ user[7] }}</td>
+                </tr>
+                <tr>
+                    <th>여행기간</th>
+                    <td>총 {{ user[8] }}일</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <br><br><br>
+        <form action="/nextPay" method="POST">
+        <div class="form-footer">
+            <button type="button" class="prev-btn" onclick="showLoading(); location.href='/'">&lt; 이전</button>
+            <button type="submit" class="next-btn" onclick="showLoading(); location.href='/nextPay'">다음 &gt; </button>
+        </div>
+        </form>
+    </main>
+
+    <!-- JavaScript 로딩 창 표시 -->
+    <script>
+        function showLoading() {
+            document.getElementById('loadingOverlay').style.display = 'flex';
+        }
+        
+        // 페이지가 로드되면 로딩 창 숨기기
+        window.addEventListener('load', function() {
+            document.getElementById('loadingOverlay').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

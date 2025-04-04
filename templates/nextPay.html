@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='payStyle.css') }}">
+  <title>결제창</title>
+  <style>
+    img {
+      width: 30%;
+      display: block;
+      margin: auto;
+    }
+    h1 {
+    text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+        <img id='이미지' class='이미지' src='/static/checklist.png'></div>
+        <br><br>
+        <h1>결제완료</h1>
+        <br><br><br><br><br>
+
+        <div class="form-footer">
+            <button type="submit" class="next-btn" onclick="location.href='/'">홈으로 돌아가기</button>
+        </div>
+        
+  </main>
+</body>
+</html>

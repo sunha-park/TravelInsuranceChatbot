@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link href="https://cdn.jsdelivr.net/gh/GoogleFonts/pretendard@main/variable/pretendard-variable.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='indexStyle.css') }}">
+    <title>Chatbot Interface</title>
+</head>
+<body>
+    <div class="container">
+        <div class="chat-group">
+            <div class="chat-header">
+                <br><br>
+                <img src="static/world.png" alt="world icon" class="icon">
+                <br><br>
+                <h3>안녕하세요</h3>
+                <h3>선하 보험입니다.</h3>
+                <h3>여행목적을 알려주세요.</h3>
+            </div>
+            <br>
+            <div class="chat-body">
+                <div class="button-group">
+                    <form action="{{ url_for('step2') }}" method="POST">
+                        <button type="submit" name="travel_type" value="해외여행">해외여행</button>
+                        <button type="submit" name="travel_type" value="장기체류">장기체류</button>
+                        <button type="submit" name="travel_type" value="국내여행">국내여행</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="chat-footer">
+                <p>챗봇상담</p>
+                <a href="{{ url_for('chat') }}"><img src="static/headset-icon.png" alt="headset icon" class="bottom_icon"></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

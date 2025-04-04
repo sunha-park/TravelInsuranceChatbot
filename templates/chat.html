@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='chatStyle.css') }}">
+    <title>선하 챗봇</title>
+</head>
+<body>
+
+<div class="chat-container">
+    <div class="chat-group">
+        <div class="chat-header">
+            <span>선하 AI 챗봇</span>
+            <button class="close-btn" type="button" onclick="location.href='/'" aria-label="Close">X</button>
+        </div>
+        <div class="chat-body" id="chat-body">
+        </div>
+
+        <div class="chat-footer">
+            <input type="text" id="user-input" class="input-box" placeholder="메시지 입력" onkeydown="checkSend(event)">
+            <button class="send-button" onclick="sendMessage()">전송</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 타이핑 효과를 구현하는 함수 (소개 메시지에만 적용)
+    function typeText(element, text, interval, callback) {
+        let index = 0;
+        function type() {
+            if (index < text.length) {
+                element.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(type, interval); // 일정 시간 간격으로 글자를 출력
+            } else if (callback) {
+                callback(); // 글자가 모두 출력된 후 콜백 함수 호출
+            }
+        }
+        type();
+    }
+
+    function appendMessage(message, sender, typingEffect = false, callback) {
+        const chatBody = document.getElementById('chat-body');
+        const messageContainer = document.createElement('div');
+        messageContainer.classList.add('chat-message', sender === 'user' ? 'message-user' : 'message-bot');
+
+        // 봇인 경우 이름 추가
+        if (sender === 'bot') {
+            const botName = document.createElement('div');
+            botName.classList.add('bot-name');
+            botName.textContent = '선하봇'; // 봇 이름을 표시
+            messageContainer.appendChild(botName);
+        }
+
+        const messageBubble = document.createElement('div');
+        messageBubble.classList.add('message-bubble', sender === 'user' ? 'user-bubble' : 'bot-bubble');
+
+        // 줄바꿈을 위해 innerHTML 사용 (안전한 방법으로 대체 가능)
+        messageBubble.innerHTML = message.replace(/(?:\r\n|\r|\n)/g, '<br>'); // 줄바꿈 문자 -> <br>로 변환
+
+        messageContainer.appendChild(messageBubble);
+        chatBody.appendChild(messageContainer);
+        chatBody.scrollTop = chatBody.scrollHeight; // 자동 스크롤
+        if (callback) callback(); // 콜백 함수 호출 (필요한 경우)
+    }
+
+
+
+    // 초기 메시지 출력 (페이지 로드 시 타이핑 효과 사용)
+    window.onload = function() {
+        appendMessage('안녕하세요,<br>선하봇입니다.<br>무엇을 도와드릴까요?', 'bot', true);
+    };
+
+    function sendMessage() {
+    const userInput = document.getElementById('user-input');
+    const message = userInput.value;
+
+    if (message.trim() !== '') {
+        appendMessage(message, 'user', false);
+        userInput.value = '';
+
+        fetch('/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ message: message })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            appendMessage(data.response.replace(/(?:\r\n|\r|\n)/g, '<br>'), 'bot', false);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            appendMessage('죄송합니다. 오류가 발생했습니다.', 'bot', false); // 오류 메시지 추가
+        });
+    }
+}
+
+
+    // Ctrl + Enter 키를 체크하여 전송하는 함수
+    function checkSend(event) {
+        if (event.ctrlKey && event.key === 'Enter') {
+            sendMessage(); // Ctrl + Enter 시 전송
+        }
+    }
+</script>
+
+</body>
+</html>
