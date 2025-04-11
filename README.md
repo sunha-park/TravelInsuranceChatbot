@@ -2,12 +2,12 @@
 
 해외여행 보험 챗봇 서비스에 대한 시연 영상입니다. LLM과 RAG 기술을 기반으로 사용자의 문의에 답변을 제공합니다.
 <br />
-▼ 영상클릭
 
 <table>
   <tr>
     <td>
       <a href="https://www.youtube.com/watch?v=4G4kfpR3Djg&t=2s" title="챗봇/LLM/RAG/해외여행보험">
+        ▼ 영상클릭
         <img src="https://github.com/sunha-park/myimages/blob/main/youtube/20250409_164728.png" width="400" alt="챗봇/LLM/RAG/해외여행보험"/>
       </a>
     </td>
