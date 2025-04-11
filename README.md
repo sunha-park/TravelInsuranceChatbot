@@ -1,3 +1,22 @@
+## 🎞 Youtube
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <a href="https://www.youtube.com/watch?v=4G4kfpR3Djg&t=2s" title="챗봇/LLM/RAG/해외여행보험">
+          <img align="center" src="https://github.com/sunha-park/myimages/blob/main/youtube/20250409_164728.png" alt-text="챗봇/LLM/RAG/해외여행보험">
+        </a>
+      </td>
+      
+    </tr>
+  </tbody>
+</table>
+> <b><em><a href="https://www.youtube.com/@i_wannabe_drunk">영상 더보기</a></em></b>
+
+
+<br />
+<br />
+
 <img src="https://github.com/sunha-park/myimages/blob/main/insurance/001.png" width="600"/>
 <img src="https://github.com/sunha-park/myimages/blob/main/insurance/002.png" width="600"/>
 <img src="https://github.com/sunha-park/myimages/blob/main/insurance/003.png" width="600"/>
