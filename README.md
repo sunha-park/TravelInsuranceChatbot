@@ -33,11 +33,11 @@
     <td><img src="https://github.com/sunha-park/myimages/blob/main/insurance/006.png" width="500"/></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/sunha-park/myimages/blob/main/insurance/007.png" width="500"/></td>
-    <td><img src="https://github.com/sunha-park/myimages/blob/main/insurance/008.png" width="500"/></td>
+    <td><img src="https://github.com/sunha-park/myimages/blob/main/insurance/007.jpg" width="500"/></td>
+    <td><img src="https://github.com/sunha-park/myimages/blob/main/insurance/008.jpg" width="500"/></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/sunha-park/myimages/blob/main/insurance/009.png" width="500"/></td>
+    <td><img src="https://github.com/sunha-park/myimages/blob/main/insurance/009.jpg" width="500"/></td>
     <td><img src="https://github.com/sunha-park/myimages/blob/main/insurance/010.png" width="500"/></td>
   </tr>
   <tr>
