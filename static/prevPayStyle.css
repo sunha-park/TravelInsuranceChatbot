@@ -5,92 +5,107 @@
     height: 100vh;
     padding: 0 10px;
     box-sizing: border-box;
-}
-
-.form-group {
+    background-color: #f8fafc;
+  }
+  
+  .form-group {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    border: 2px solid #4A90E2;
-    border-radius: 10px;
-    padding: 10px;
+    gap: 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 30px;
     width: 100%;
-    height: auto;
-    box-sizing: border-box;
-    background-color: #fff;
-}
-
-.form-header {
+    max-width: 500px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  }
+  
+  /* 헤더 */
+  .form-header {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
     align-items: center;
-    margin-bottom: 20px;
-}
-
-.form-header h4 {
-    flex-grow: 3; /* 남은 공간을 차지 */
-    text-align: center; /* 가운데 정렬 */
-    margin: 0; /* 기본 마진 제거 */
-}
-
-
-/* 버튼 그룹 스타일 */
-.user-info-form {
+    width: 100%;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .form-header h4 {
+    flex: 1;
+    text-align: center;
+    font-size: 18px;
+    color: #1e3a8a;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  /* 폼 입력 필드 */
+  .user-info-form {
     display: flex;
     flex-direction: column;
-    width: 300px;
-}
-
-
-.user-info-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 14px;
-}
-
-.user-info-form input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #c4c4c4;
-    border-radius: 5px;
+  }
+  
+  .user-info-form label {
+    margin-bottom: 6px;
     font-size: 14px;
-}
-
-.user-info-form input::placeholder {
-    color: #999;
-}
-
-.form-footer {
-    margin-top: 30px;   
+    font-weight: 500;
+    color: #334155;
+  }
+  
+  .user-info-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #f9fafb;
+    transition: border-color 0.3s ease;
+  }
+  
+  .user-info-form input:focus {
+    border-color: #2563eb;
+    outline: none;
+  }
+  
+  .user-info-form input::placeholder {
+    color: #94a3b8;
+  }
+  
+  /* 버튼 영역 */
+  .form-footer {
     display: flex;
-    justify-content: space-between; /* 버튼 사이의 공간을 균등하게 분배 */
-}
-
-
-.prev-btn {
-    background-color: #ccc;
-    flex: 3; /* 전체 너비의 3 부분 중 3 부분을 차지 */
-}
-
-.next-btn {
-    background-color: #007bff;
-    color: white;
-    flex: 7; /* 전체 너비의 3 부분 중 7 부분을 차지 */
-}
-
-.prev-btn:hover, .next-btn:hover {
-    opacity: 0.9;
-}
-
-.prev-btn, .next-btn {
-    padding: 15px 17px;
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .prev-btn,
+  .next-btn {
+    flex: 1;
+    padding: 14px;
+    font-size: 15px;
     border: none;
-    border-radius: 5px;
-    font-size: 14px;
+    border-radius: 8px;
     cursor: pointer;
-    width: 100%; /* 버튼의 너비를 100%로 설정 */
-}
-
+    transition: all 0.3s ease;
+  }
+  
+  .prev-btn {
+    background-color: #e5e7eb;
+    color: #374151;
+  }
+  
+  .next-btn {
+    background-color: #1d4ed8;
+    color: #ffffff;
+  }
+  
+  .prev-btn:hover,
+  .next-btn:hover {
+    opacity: 0.92;
+  }
+  

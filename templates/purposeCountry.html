@@ -1,182 +1,167 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='purposeCountryStyle.css') }}">
-    <title>Chatbot Interface</title>
-</head>
-<body>
-    <div class="container">
-    <br>
-    <br>
-    <br>
-    <div class="chat-group">
-        <div class="chat-header">
-            <br><br>
-            <img src="static/world.png" alt="world icon" class="icon">
-            <br><br>
-            <h3>여행 목적과 여행 국가를</h3>
-            <h3>선택해주세요.</h3>
-        </div>
-    
-        <form action="{{ url_for('step4') }}" method="POST">
-        <div class="chat-body">
-            <div class="PurposeCountry-group">
-                <h6>여행목적</h6>
-                <select name="travel_purpose" aria-label="여행목적 선택" required>
-                    <option selected disabled value="">여행목적 선택</option>
-                    <option>여행/관광</option>
-                    <option>업무/출장</option>
-                    <option>유학/연수/캠프</option>
-                </select>
+{% extends "base.html" %}
 
-                <h6>여행국가</h6>
-                <select name="travel_country" aria-label="여행국가 선택" required>
-                  <option selected disabled value="">여행국가 선택</option>
-                    <option>가나</option>
-                    <option>가봉</option>
-                    <option>가이아나</option>
-                    <option>가자 지구</option>
-                    <option>과테말라</option>
-                    <option>그리스</option>
-                    <option>그루지야</option>
-                    <option>기니</option>
-                    <option>기니비사우</option>
-                    <option>나미비아</option>
-                    <option>나우루</option>
-                    <option>나이지리아</option>
-                    <option>나이제르</option>
-                    <option>네덜란드</option>
-                    <option>네팔</option>
-                    <option>노르웨이</option>
-                    <option>뉴질랜드</option>
-                    <option>니가르과</option>
-                    <option>니제르</option>
-                    <option>대만</option>
-                    <option>대한민국</option>
-                    <option>덴마크</option>
-                    <option>도미니카</option>
-                    <option>도미니카 공화국</option>
-                    <option>독일</option>
-                    <option>라오스</option>
-                    <option>라이베리아</option>
-                    <option>러시아</option>
-                    <option>레바논</option>
-                    <option>레소토</option>
-                    <option>로마니아</option>
-                    <option>룩셈부르크</option>
-                    <option>룩셈부르크</option>
-                    <option>리투아니아</option>
-                    <option>마다가스카르</option>
-                    <option>말라위</option>
-                    <option>말레이시아</option>
-                    <option>말리</option>
-                    <option>멕시코</option>
-                    <option>모로코</option>
-                    <option>모잠비크</option>
-                    <option>몬테네그로</option>
-                    <option>미국</option>
-                    <option>미얀마</option>
-                    <option>바누아투</option>
-                    <option>바르바도스</option>
-                    <option>바레인</option>
-                    <option>베네수엘라</option>
-                    <option>베트남</option>
-                    <option>벨기에</option>
-                    <option>벨라루스</option>
-                    <option>벨리즈</option>
-                    <option>보스니아 헤르체고비나</option>
-                    <option>부르키나파소</option>
-                    <option>부룬디</option>
-                    <option>북한</option>
-                    <option>부탄</option>
-                    <option>불가리아</option>
-                    <option>브라질</option>
-                    <option>사우디아라비아</option>
-                    <option>사모아</option>
-                    <option>사우디 아라비아</option>
-                    <option>세네갈</option>
-                    <option>세르비아</option>
-                    <option>세이셸</option>
-                    <option>소말리아</option>
-                    <option>솔로몬 제도</option>
-                    <option>수단</option>
-                    <option>스리랑카</option>
-                    <option>스웨덴</option>
-                    <option>스위스</option>
-                    <option>스페인</option>
-                    <option>슬로바키아</option>
-                    <option>슬로베니아</option>
-                    <option>시에라리온</option>
-                    <option>신시아</option>
-                    <option>신시아</option>
-                    <option>아이슬란드</option>
-                    <option>아이티</option>
-                    <option>아일랜드</option>
-                    <option>아프가니스탄</option>
-                    <option>아프리카 연합</option>
-                    <option>알바니아</option>
-                    <option>알제리</option>
-                    <option>앙골라</option>
-                    <option>에스토니아</option>
-                    <option>에콰도르</option>
-                    <option>엘살바도르</option>
-                    <option>영국</option>
-                    <option>예멘</option>
-                    <option>오스트레일리아</option>
-                    <option>오스트리아</option>
-                    <option>온두라스</option>
-                    <option>우간다</option>
-                    <option>우루과이</option>
-                    <option>우즈베키스탄</option>
-                    <option>이스라엘</option>
-                    <option>이집트</option>
-                    <option>이탈리아</option>
-                    <option>인도</option>
-                    <option>인도네시아</option>
-                    <option>일본</option>
-                    <option>자메이카</option>
-                    <option>잠비아</option>
-                    <option>저지섬</option>
-                    <option>체코</option>
-                    <option>칠레</option>
-                    <option>카자흐스탄</option>
-                    <option>카메룬</option>
-                    <option>카보베르데</option>
-                    <option>캐나다</option>
-                    <option>케냐</option>
-                    <option>코스타리카</option>
-                    <option>코모로</option>
-                    <option>코소보</option>
-                    <option>콜롬비아</option>
-                    <option>크로아티아</option>
-                    <option>키르기스스탄</option>
-                    <option>키프로스</option>
-                    <option>타지키스탄</option>
-                    <option>탄자니아</option>
-                    <option>터키</option>
-                    <option>투르크메니스탄</option>
-                    <option>파나마</option>
-                    <option>파키스탄</option>
-                    <option>포르투갈</option>
-                    <option>폴란드</option>
-                    <option>프랑스</option>
-                    <option>필리핀</option>
-                    <option>핀란드</option>
-                    <option>헝가리</option>
-                </select>
-                <button type="submit" class="outline">다음</button>
-            </div>
-        </div>
-        </form>
+{% block title %}여행 목적/국가 입력 | 선하 보험{% endblock %}
 
-        <div class="chat-footer">
-            <p>챗봇상담</p>
-            <a href="{{ url_for('chat') }}"><img src="static/headset-icon.png" alt="headset icon" class="bottom_icon"></a>
-        </div>
+{% block content %}
+<div class="container">
+  <div class="chat-group">
+    <div class="chat-header">
+      <img src="{{ url_for('static', filename='airplane.png') }}" alt="world icon" class="icon">
+      <div class="chat-title-group">
+        <p><strong>여행 목적</strong>과 <strong>여행 국가</strong>를 선택해주세요.</p>
+      </div>
     </div>
-</body>
-</html>
+
+    <form action="{{ url_for('step4') }}" method="POST">
+      <div class="chat-body">
+        <div class="PurposeCountry-row">
+            <div class="select-group">
+              <label for="travel_purpose">여행 목적</label>
+              <select name="travel_purpose" id="travel_purpose" aria-label="여행목적 선택" required>
+                <option selected disabled value="">여행목적 선택</option>
+                <option>여행/관광</option>
+                <option>업무/출장</option>
+                <option>유학/연수/캠프</option>
+              </select>
+            </div>
+
+            <div class="select-group">
+              <label for="travel_country">여행 국가</label>
+              <select name="travel_country" id="travel_country" aria-label="여행국가 선택" required>
+            <option selected disabled value="">여행국가 선택</option>
+            <option>가나</option>
+            <option>가봉</option>
+            <option>가이아나</option>
+            <option>가자 지구</option>
+            <option>과테말라</option>
+            <option>그리스</option>
+            <option>그루지야</option>
+            <option>기니</option>
+            <option>기니비사우</option>
+            <option>나미비아</option>
+            <option>나우루</option>
+            <option>나이지리아</option>
+            <option>나이제르</option>
+            <option>네덜란드</option>
+            <option>네팔</option>
+            <option>노르웨이</option>
+            <option>뉴질랜드</option>
+            <option>니가르과</option>
+            <option>니제르</option>
+            <option>대만</option>
+            <option>대한민국</option>
+            <option>덴마크</option>
+            <option>도미니카</option>
+            <option>도미니카 공화국</option>
+            <option>독일</option>
+            <option>라오스</option>
+            <option>라이베리아</option>
+            <option>러시아</option>
+            <option>레바논</option>
+            <option>레소토</option>
+            <option>로마니아</option>
+            <option>룩셈부르크</option>
+            <option>리투아니아</option>
+            <option>마다가스카르</option>
+            <option>말라위</option>
+            <option>말레이시아</option>
+            <option>말리</option>
+            <option>멕시코</option>
+            <option>모로코</option>
+            <option>모잠비크</option>
+            <option>몬테네그로</option>
+            <option>미국</option>
+            <option>미얀마</option>
+            <option>바누아투</option>
+            <option>바르바도스</option>
+            <option>바레인</option>
+            <option>베네수엘라</option>
+            <option>베트남</option>
+            <option>벨기에</option>
+            <option>벨라루스</option>
+            <option>벨리즈</option>
+            <option>보스니아 헤르체고비나</option>
+            <option>부르키나파소</option>
+            <option>부룬디</option>
+            <option>북한</option>
+            <option>부탄</option>
+            <option>불가리아</option>
+            <option>브라질</option>
+            <option>사우디아라비아</option>
+            <option>사모아</option>
+            <option>세네갈</option>
+            <option>세르비아</option>
+            <option>세이셸</option>
+            <option>소말리아</option>
+            <option>솔로몬 제도</option>
+            <option>수단</option>
+            <option>스리랑카</option>
+            <option>스웨덴</option>
+            <option>스위스</option>
+            <option>스페인</option>
+            <option>슬로바키아</option>
+            <option>슬로베니아</option>
+            <option>시에라리온</option>
+            <option>아이슬란드</option>
+            <option>아이티</option>
+            <option>아일랜드</option>
+            <option>아프가니스탄</option>
+            <option>알바니아</option>
+            <option>알제리</option>
+            <option>앙골라</option>
+            <option>에스토니아</option>
+            <option>에콰도르</option>
+            <option>엘살바도르</option>
+            <option>영국</option>
+            <option>예멘</option>
+            <option>오스트레일리아</option>
+            <option>오스트리아</option>
+            <option>온두라스</option>
+            <option>우간다</option>
+            <option>우루과이</option>
+            <option>우즈베키스탄</option>
+            <option>이스라엘</option>
+            <option>이집트</option>
+            <option>이탈리아</option>
+            <option>인도</option>
+            <option>인도네시아</option>
+            <option>일본</option>
+            <option>자메이카</option>
+            <option>잠비아</option>
+            <option>저지섬</option>
+            <option>체코</option>
+            <option>칠레</option>
+            <option>카자흐스탄</option>
+            <option>카메룬</option>
+            <option>카보베르데</option>
+            <option>캐나다</option>
+            <option>케냐</option>
+            <option>코스타리카</option>
+            <option>코모로</option>
+            <option>코소보</option>
+            <option>콜롬비아</option>
+            <option>크로아티아</option>
+            <option>키르기스스탄</option>
+            <option>키프로스</option>
+            <option>타지키스탄</option>
+            <option>탄자니아</option>
+            <option>터키</option>
+            <option>투르크메니스탄</option>
+            <option>파나마</option>
+            <option>파키스탄</option>
+            <option>포르투갈</option>
+            <option>폴란드</option>
+            <option>프랑스</option>
+            <option>필리핀</option>
+            <option>핀란드</option>
+            <option>헝가리</option>
+              </select>
+            </div>
+        </div>  
+
+        <button type="submit" class="outline">다음</button>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}

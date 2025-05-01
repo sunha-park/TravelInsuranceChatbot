@@ -14,7 +14,7 @@
     <div class="chat-group">
         <div class="chat-header">
             <span>선하 AI 챗봇</span>
-            <button class="close-btn" type="button" onclick="location.href='/'" aria-label="Close">X</button>
+            <button class="close-btn" type="button" onclick="window.parent.closeChatModal()" aria-label="Close">X</button>
         </div>
         <div class="chat-body" id="chat-body">
         </div>
@@ -67,6 +67,34 @@
         if (callback) callback(); // 콜백 함수 호출 (필요한 경우)
     }
 
+    let loadingMessageEl = null;
+
+    function showLoadingMessage() {
+        const chatBody = document.getElementById('chat-body');
+        loadingMessageEl = document.createElement('div');
+        loadingMessageEl.classList.add('chat-message', 'message-bot');
+
+        const botName = document.createElement('div');
+        botName.classList.add('bot-name');
+        botName.textContent = '선하봇';
+
+        const bubble = document.createElement('div');
+        bubble.classList.add('message-bubble', 'bot-bubble');
+        bubble.innerHTML = `<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>`;
+
+        loadingMessageEl.appendChild(botName);
+        loadingMessageEl.appendChild(bubble);
+        chatBody.appendChild(loadingMessageEl);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function removeLoadingMessage() {
+        if (loadingMessageEl) {
+            loadingMessageEl.remove();
+            loadingMessageEl = null;
+        }
+    }
+
 
 
     // 초기 메시지 출력 (페이지 로드 시 타이핑 효과 사용)
@@ -82,6 +110,8 @@
         appendMessage(message, 'user', false);
         userInput.value = '';
 
+        showLoadingMessage(); // 로딩 메시지 표시
+
         fetch('/chat', {
             method: 'POST',
             headers: {
@@ -96,10 +126,12 @@
             return response.json();
         })
         .then(data => {
+            removeLoadingMessage(); // 제거
             appendMessage(data.response.replace(/(?:\r\n|\r|\n)/g, '<br>'), 'bot', false);
         })
         .catch(error => {
             console.error('Error:', error);
+            removeLoadingMessage(); // 제거
             appendMessage('죄송합니다. 오류가 발생했습니다.', 'bot', false); // 오류 메시지 추가
         });
     }

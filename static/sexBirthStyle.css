@@ -1,4 +1,6 @@
-/* 전체 컨테이너 중앙 정렬 및 반응형 설정 */
+/* ================================
+   컨테이너 중앙 정렬
+================================ */
 .container {
     display: flex;
     justify-content: center;
@@ -8,92 +10,109 @@
     box-sizing: border-box;
 }
 
-
-/* 아이콘 스타일 */
-.icon {
-    width: 80px;
-    height: auto;
-    margin-bottom: 20px;
-}
-
-/* 채팅 그룹 스타일 */
+/* ================================
+   카드 스타일
+================================ */
 .chat-group {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    border: 2px solid #4A90E2;
-    border-radius: 10px;
-    padding: 10px;
-    width: 100%;
-    height: auto;
-    box-sizing: border-box;
+    gap: 20px;
     background-color: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 
-/* 채팅 헤더 스타일 */
+/* ================================
+   헤더
+================================ */
 .chat-header {
     text-align: center;
     font-family: 'Poppins', sans-serif;
-    margin-bottom: 10px;
 }
 
-.chat-header h3 {
-    margin: 5px 0;
-    line-height: 1.4;
+.icon {
+    width: 80px;
+    height: auto;
+    margin-bottom: 15px;
 }
-/* 버튼 그룹 스타일 */
+
+.chat-header h3,
+.chat-title-group p {
+    margin: 6px 0;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #1e3a8a;
+    font-weight: 500;
+}
+
+/* ================================
+   본문
+================================ */
 .chat-body {
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
-    width: 300px;
-}
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+  }
 
 .info-group {
-    color: black;
     display: flex;
     flex-direction: column;
+    gap: 16px;
     width: 100%;
-}
-.button-group {
-    display: flex; /* 버튼 그룹을 가로로 배치 */
-    justify-content: space-between; /* 버튼 사이에 간격 생성 */
-    width: 100%; /* 버튼 그룹이 부모 요소의 폭을 가득 채우도록 설정 */
-}
-.button-group button {
-    flex: 1; /* 버튼이 동일한 너비를 가질 수 있도록 설정 */
-    margin: 0 5px; /* 버튼 사이에 약간의 여백 추가 */
-    padding: 15px;
-    border: 1px solid #4A90E2;
-    border-radius: 10px;
-    background-color: white;
-    font-size: 16px;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
+    }
 
+.info-group input[type="text"] {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    }
 
-
-/* 채팅 푸터 스타일 */
-.chat-footer {
+/* ================================
+   성별 버튼
+================================ */
+.gender-button-group {
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 5px;
-    border-top: 1px solid #ccc;
-    padding-top: 10px;
+    justify-content: space-between;
+    gap: 12px;
     width: 100%;
+  }
+  
+.gender-button-group button {
+    flex: 1;
+    padding: 14px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #1e40af;
+    background-color: white;
+    color: #1e40af;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
 }
 
-/* 하단 아이콘 스타일 */
-.bottom_icon {
-    width: 40px;
-    height: auto;
+.gender-button-group button:hover {
+    background-color: #1e40af;
+    color: white;
+    transform: translateY(-2px);
 }
 
-/* 푸터 텍스트 */
-.chat-footer p {
-    font-size: calc(0.8rem + 0.2vw); /* Responsive font size */
-    margin: 0;
-    margin-right: 5px;
+.gender-button-group .active {
+    background-color: #1e40af;
+    color: white;
+}
+
+
+.chat-footer {
+    display: none;
 }

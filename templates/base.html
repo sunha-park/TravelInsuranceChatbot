@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}선하 보험{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 외부 폰트 & 아이콘 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/gh/GoogleFonts/pretendard@main/variable/pretendard-variable.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    
+    <!-- 공통 및 페이지별 CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='insuranceStyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='indexStyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dateStyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='purposeCountryStyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='sexBirthStyle.css') }}">
+</head>
+<body>
+    {% block content %}{% endblock %}
+
+    <!-- 챗봇 플로팅 버튼 -->
+    <div class="floating-chat-button" onclick="openChatModal()">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <!-- 챗봇 모달 -->
+    <div id="chatModal" class="chat-modal">
+        <div class="chat-modal-content">
+            <iframe src="{{ url_for('chat') }}" width="100%" height="100%" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function openChatModal() {
+            document.getElementById("chatModal").style.display = "flex";
+        }
+        function closeChatModal() {
+            document.getElementById("chatModal").style.display = "none";
+        }
+    </script>
+</body>
+</html>
